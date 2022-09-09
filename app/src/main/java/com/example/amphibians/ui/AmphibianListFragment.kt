@@ -41,6 +41,7 @@ class AmphibianListFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        viewModel.getAmphibianList()
 
         binding.recyclerView.adapter = AmphibianListAdapter(AmphibianListener { amphibian ->
             viewModel.onAmphibianClicked(amphibian)

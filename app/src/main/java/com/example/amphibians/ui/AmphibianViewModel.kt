@@ -46,10 +46,10 @@ class AmphibianViewModel : ViewModel() {
 
     // A function that gets a list of amphibians from the api service and sets the status via a Coroutine
     init {
-        loadAmphibians()
+        getAmphibianList()
     }
 
-    private fun loadAmphibians() {
+    fun getAmphibianList() {
         viewModelScope.launch {
             _status.value = AmphibianApiStatus.LOADING
 
