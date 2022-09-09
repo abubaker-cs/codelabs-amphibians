@@ -24,6 +24,7 @@
             name="viewModel"
             type="com.example.amphibians.ui.AmphibianViewModel"
             />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,7 +41,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:listData="@{viewModel.amphibianList}"
+            app:listData="@{viewModel.amphibians}"
             app:spanCount="2"
             tools:listitem="@layout/list_view_item"
             />
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="Status"
-            app:amphibianApiStatus="@{viewModel.status}"
+            app:apiStatus="@{viewModel.status}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
