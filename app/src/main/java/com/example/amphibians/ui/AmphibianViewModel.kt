@@ -32,12 +32,12 @@ enum class AmphibianApiStatus {
 class AmphibianViewModel : ViewModel() {
 
     // Status: Properties to represent MutableLiveData and LiveData for the API status
-    private val _status = MutableLiveData(AmphibianApiStatus.LOADING)
+    private val _status = MutableLiveData<AmphibianApiStatus>()
     val status: LiveData<AmphibianApiStatus> = _status
 
     // List of Amphibian Objects: Properties to represent MutableLiveData and LiveData for a list of amphibian objects
-    private val _amphibianList = MutableLiveData<List<Amphibian>>()
-    val amphibianList: LiveData<List<Amphibian>> = _amphibianList
+    private val _amphibians = MutableLiveData<List<Amphibian>>()
+    val amphibians: LiveData<List<Amphibian>> = _amphibians
 
     // Single amphibian object: Properties to represent MutableLiveData and LiveData for a single amphibian object.
     //  This will be used to display the details of an amphibian when a list item is clicked
@@ -45,19 +45,20 @@ class AmphibianViewModel : ViewModel() {
     val amphibian: LiveData<Amphibian> = _amphibian
 
     // A function that gets a list of amphibians from the api service and sets the status via a Coroutine
-    init {
-        getAmphibianList()
-    }
+    // init {
+    //     getAmphibianList()
+    // }
 
     fun getAmphibianList() {
         viewModelScope.launch {
             _status.value = AmphibianApiStatus.LOADING
 
             try {
-                _amphibianList.value = AmphibianApi.retrofitService.getAmphibians()
+                _amphibians.value = AmphibianApi.retrofitService.getAmphibians()
                 _status.value = AmphibianApiStatus.DONE
             } catch (exception: Exception) {
                 _status.value = AmphibianApiStatus.ERROR
+                _amphibians.value = listOf()
             }
         }
     }
