@@ -37,7 +37,7 @@ class AmphibianViewModel : ViewModel() {
 
     // List of Amphibian Objects: Properties to represent MutableLiveData and LiveData for a list of amphibian objects
     private val _amphibianList = MutableLiveData<List<Amphibian>>()
-    val amphibians: LiveData<List<Amphibian>> = _amphibianList
+    val amphibianList: LiveData<List<Amphibian>> = _amphibianList
 
     // Single amphibian object: Properties to represent MutableLiveData and LiveData for a single amphibian object.
     //  This will be used to display the details of an amphibian when a list item is clicked

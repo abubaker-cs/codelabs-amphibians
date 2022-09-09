@@ -39,3 +39,5 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
+
+// https://github.com/bk20dev/amphibians
