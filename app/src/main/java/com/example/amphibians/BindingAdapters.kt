@@ -15,6 +15,7 @@
  */
 package com.example.amphibians
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -40,7 +41,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Amphibian>?) {
  */
 @BindingAdapter("apiStatus")
 fun bindStatus(statusImageView: ImageView, status: AmphibianApiStatus?) {
-    when(status) {
+    when (status) {
         AmphibianApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.loading_animation)
@@ -51,6 +52,9 @@ fun bindStatus(statusImageView: ImageView, status: AmphibianApiStatus?) {
         AmphibianApiStatus.ERROR -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        else -> {
+            Log.v("BindingAdapters", "Display message")
         }
     }
 }
